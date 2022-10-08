@@ -3,7 +3,14 @@
     src: url('~/assets/fonts/Nunito-VariableFont_wght.ttf') format('truetype');
 }
 
+$primary: #38abec;
+$gray: #f8f8f8;
 
+
+
+::selection{
+  background-color: $primary;
+}
 
 /* Box sizing rules */
 *,
@@ -12,10 +19,11 @@
   box-sizing: border-box;
   font-family: 'Nunito', Helvetica, sans-serif;
   font-size: 100%;
+  color: #222;
 }
 
 body{
-  padding: 4%;
+  padding: 4% 8%;
 }
 
 /* Remove default margin */
@@ -60,6 +68,7 @@ img,
 picture {
   max-width: 100%;
   display: block;
+  height: auto;
 }
 
 /* Inherit fonts for inputs and buttons */
@@ -84,4 +93,15 @@ select {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+
+
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.5s ease-in-out;
+}
+.page-enter,
+.page-leave-to {
+  opacity: 0;
 }

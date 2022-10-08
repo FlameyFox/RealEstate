@@ -35,7 +35,7 @@ header {
     flex-basis: 40%;
     display: flex;
 
-    font-size: clamp(18px,3vw,32px);
+    font-size: clamp(18px, 3vw, 32px);
     font-weight: 700;
   }
 
@@ -52,15 +52,39 @@ header {
       a {
         padding: 0.25rem 0.5rem;
         font-size: clamp(14px, 2vw, 20px);
-        color:#222;
+        color: #222;
         text-decoration: none;
+        position: relative;
+        transition: color .2s ease-in-out;
+
         &:visited,
-        &:active{
-            color: #222;
+        &:active {
+          color: #222;
         }
 
-        &.nuxt-link-exact-active{
-            text-decoration: underline;
+        &::after {
+          position: absolute;
+          content: '';
+          width: 100%;
+          height: 2px;
+          top: 100%;
+          left: 0;
+          background: $primary;
+          transition: transform 0.5s ease-in-out;
+          transform: scaleX(0);
+          transform-origin: right;
+        }
+        &:hover{
+          color:#999;
+        }
+
+
+        &.nuxt-link-exact-active {
+
+          &::after {
+            transform: scaleX(1);
+            transform-origin: left;
+          }
         }
       }
     }

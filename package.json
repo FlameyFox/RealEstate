@@ -21,9 +21,11 @@
     "webpack": "^4.46.0"
   },
   "devDependencies": {
+    "@nuxtjs/style-resources": "^1.2.1",
     "eslint-config-prettier": "^8.3.0",
+    "node-sass": "^7.0.3",
     "prettier": "^2.5.1",
     "sass": "^1.55.0",
-    "sass-loader": "10"
+    "sass-loader": "^10.3.1"
   }
 }
