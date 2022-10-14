@@ -8,7 +8,7 @@
       <h4 class="properties__property--price">
         {{ formatPrice(this.property.price) }}
       </h4>
-      <div class="stats">
+      <div class="details">
         <div>
           <h5>Size: {{ this.property.details.size }}</h5>
         </div>
@@ -63,6 +63,16 @@ export default {
     background-color: $gray;
     padding: 1rem;
     border-radius: 1rem;
+
+    .details{
+      display: flex;
+      justify-content: space-between;
+
+      > div{
+        display: flex;
+        flex-direction: column;
+      }
+    }
   }
   &--title {
     font-size: 1.5rem;

@@ -68,6 +68,17 @@ export default {
             date: 'DATE',
           },
         },
+        {
+          id: 2,
+          title: 'Fox Park 60',
+          price: '690000',
+          details: {
+            size: 146,
+            rooms: 6,
+            features: 'Yip',
+            date: 'DATE',
+          },
+        },
       ],
     }
   },
@@ -92,7 +103,7 @@ export default {
   gap: 2rem;
 
   .left {
-    background-color: #eee;
+    background-color: $gray;
     padding: 2rem;
     border-radius: 1.75rem;
     flex-basis: 40%;

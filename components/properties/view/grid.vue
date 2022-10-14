@@ -16,7 +16,7 @@ export default {
 .properties {
   &.grid {
     display: grid;
-    gap: 1rem;
+    gap: 2rem;
     grid-template-columns: repeat(3, 1fr);
   }
 }
