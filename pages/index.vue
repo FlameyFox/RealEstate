@@ -49,7 +49,7 @@ export default {
         {
           id: 1,
           title: 'Bay City 32 Blvrd',
-          price: '5.100.000',
+          price: '5100000',
           details: {
             size: 324,
             rooms: 12,
@@ -60,7 +60,7 @@ export default {
         {
           id: 2,
           title: 'Bay City 76 Blvrd',
-          price: '5.700.000',
+          price: '5700000',
           details: {
             size: 334,
             rooms: 12,
