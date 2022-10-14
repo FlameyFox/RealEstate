@@ -34,26 +34,7 @@
     </section>
     <section id="secondsection">
       <h2>Take a look</h2>
-      <div class="grid properties">
-        <div class="properties__property">
-          <div class="properties__property--imgcontainer">
-            <img src="~/static/img/banner.jpg" alt=" TITLE " />
-          </div>
-          <div class="properties__property--details">
-            <h4 class="properties__property--title">Bay City 32 Blvrd</h4>
-            <h4 class="properties__property--price">$5.100.000</h4>
-            <div class="stats">
-              <div><h5>Size:</h5></div>
-              <div><h5>Rooms:</h5></div>
-              <div><h5>Extras:</h5></div>
-              <div><h5>Time:</h5></div>
-            </div>
-          </div>
-          <div class="properties__property--actions">
-            <a href="#" class="btn seemore">Se more</a>
-          </div>
-        </div>
-      </div>
+      <propertiesViewGrid :properties="this.properties"></propertiesViewGrid>
     </section>
   </div>
 </template>
@@ -61,6 +42,35 @@
 <script>
 export default {
   name: 'IndexPage',
+
+  data() {
+    return {
+      properties: [
+        {
+          id: 1,
+          title: 'Bay City 32 Blvrd',
+          price: '5.100.000',
+          details: {
+            size: 324,
+            rooms: 12,
+            features: 'Many',
+            date: 'DATE',
+          },
+        },
+        {
+          id: 2,
+          title: 'Bay City 76 Blvrd',
+          price: '5.700.000',
+          details: {
+            size: 334,
+            rooms: 12,
+            features: 'Many',
+            date: 'DATE',
+          },
+        },
+      ],
+    }
+  },
 }
 </script>
 
@@ -114,36 +124,6 @@ export default {
     font-size: 2rem;
     margin-bottom: 3rem;
     line-height: 1.2;
-  }
-}
-
-.properties {
-  &.grid {
-    display: grid;
-    gap: 1rem;
-    grid-template-columns:repeat(3,1fr);
-  }
-
-  &__property {
-
-    &--imgcontainer {
-      height: 20rem;
-      margin-bottom: 1rem;
-      img {
-        border-radius: 1rem;
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-      }
-    }
-    &--details{
-      background-color: $gray;
-      padding: 1rem;
-      border-radius: 1rem;
-    }
-    &--title {
-      font-size: 1.5rem;
-    }
   }
 }
 </style>
