@@ -34,7 +34,6 @@
     </section>
     <section id="secondsection">
       <h2>Take a look</h2>
-      {{ allProperties }}
       <div v-for="(property, index) in allProperties" :key="index">
         {{ property }}
       </div>
