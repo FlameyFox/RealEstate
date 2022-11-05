@@ -30,11 +30,16 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+    '@nuxtjs/apollo',
   ],
-
+  apollo: {
+    clientConfigs: {
+      default: '~/apollo/config.js',
+    },
+  },
   styleResources: {
-    scss: ['./assets/scss/*.scss']
+    scss: ['./assets/scss/*.scss'],
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -46,11 +51,11 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
 
-    pageTransition: {
-      name: 'page',
-      mode: 'out-in',
-      beforeEnter (el) {
-        console.log('Before enter...');
-      }
-    }
+  pageTransition: {
+    name: 'page',
+    mode: 'out-in',
+    beforeEnter(el) {
+      console.log('Before enter...')
+    },
+  },
 }

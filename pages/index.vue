@@ -34,15 +34,32 @@
     </section>
     <section id="secondsection">
       <h2>Take a look</h2>
+      <div v-for="(property, index) in allProperties" :key="index">
+        {{ property }}
+      </div>
       <propertiesViewGrid :properties="this.properties"></propertiesViewGrid>
     </section>
   </div>
 </template>
 
 <script>
+import gql from 'graphql-tag'
 
 export default {
   name: 'IndexPage',
+
+  apollo: {
+    allProperties: gql`
+      {
+        allProperties {
+          id
+          address
+          _status
+          _firstPublishedAt
+        }
+      }
+    `,
+  },
 
   data() {
     return {
