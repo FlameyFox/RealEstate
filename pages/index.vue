@@ -34,10 +34,8 @@
     </section>
     <section id="secondsection">
       <h2>Take a look</h2>
-      <div v-for="(property, index) in allProperties" :key="index">
-        {{ property }}
-      </div>
-      <propertiesViewGrid :properties="this.properties"></propertiesViewGrid>
+      <div v-if="$apollo.loading">Loading properties...</div>
+      <propertiesViewGrid v-else :properties="allProperties"></propertiesViewGrid>
     </section>
   </div>
 </template>
@@ -53,52 +51,19 @@ export default {
       {
         allProperties {
           id
-          address
-          _status
           _firstPublishedAt
+          _status
+          address
+          price
+          rooms
+          squareMeters
         }
       }
     `,
   },
 
   data() {
-    return {
-      properties: [
-        {
-          id: 1,
-          title: 'Bay City 32 Blvrd',
-          price: '5100000',
-          details: {
-            size: 324,
-            rooms: 12,
-            features: 'Many',
-            date: 'DATE',
-          },
-        },
-        {
-          id: 2,
-          title: 'Bay City 76 Blvrd',
-          price: '5700000',
-          details: {
-            size: 334,
-            rooms: 12,
-            features: 'Many',
-            date: 'DATE',
-          },
-        },
-        {
-          id: 2,
-          title: 'Fox Park 60',
-          price: '690000',
-          details: {
-            size: 146,
-            rooms: 6,
-            features: 'Yip',
-            date: 'DATE',
-          },
-        },
-      ],
-    }
+    return {}
   },
 }
 </script>

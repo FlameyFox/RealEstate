@@ -4,27 +4,30 @@
       <img src="~/static/img/banner.jpg" alt=" TITLE " />
     </div>
     <div class="properties__property--details">
-      <h4 class="properties__property--title">{{ this.property.title }}</h4>
+      <h4 class="properties__property--title">{{ this.property.address }}</h4>
       <h4 class="properties__property--price">
         {{ formatPrice(this.property.price) }}
       </h4>
       <div class="details">
         <div>
-          <h5>Size: {{ this.property.details.size }}</h5>
+          <h5>Size: {{ this.property.squareMeters }}</h5>
         </div>
         <div>
-          <h5>Rooms: {{ this.property.details.rooms }}</h5>
+          <h5>Rooms: {{ this.property.rooms }}</h5>
         </div>
         <div>
-          <h5>Features: {{ this.property.details.features }}</h5>
+          <h5>Features: <abbr title="Show features here">xxx</abbr></h5>
         </div>
         <div>
-          <h5>Date: {{ this.property.details.date }}</h5>
+          <h5>
+            Date:
+            {{ new Date(this.property._firstPublishedAt).toLocaleDateString() }}
+          </h5>
         </div>
       </div>
     </div>
     <div class="properties__property--actions">
-      <a href="#" class="btn seemore">Se more</a>
+      <nuxt-link :to="'/property/' + this.property.id" class="btn seemore">Se more</nuxt-link>
     </div>
   </div>
 </template>
@@ -64,11 +67,11 @@ export default {
     padding: 1rem;
     border-radius: 1rem;
 
-    .details{
+    .details {
       display: flex;
       justify-content: space-between;
 
-      > div{
+      > div {
         display: flex;
         flex-direction: column;
       }
