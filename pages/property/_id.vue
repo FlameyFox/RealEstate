@@ -1,6 +1,6 @@
 <template>
   <div v-if="$apollo.loading">Loading properties...</div>
-  <div v-else-if="this.property">
+  <div v-else>
     <h1 v-if="this.property.address">{{ this.property.address }}</h1>
     <h2>DETAILS</h2>
   </div>
@@ -22,6 +22,9 @@ export default {
             price
             rooms
             squareMeters
+            featuredImage {
+              url(imgixParams: { auto: enhance, h: "320", w: "462" })
+            }
           }
         }
       `,

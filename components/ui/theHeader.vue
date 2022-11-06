@@ -1,6 +1,6 @@
 <template>
   <header>
-    <div class="logo">FlameyEstates</div>
+    <nuxt-link to="/" class="logo">FlameyEstates</nuxt-link>
     <div class="menu">
       <ul>
         <li>

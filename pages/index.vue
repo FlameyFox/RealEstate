@@ -35,7 +35,10 @@
     <section id="secondsection">
       <h2>Take a look</h2>
       <div v-if="$apollo.loading">Loading properties...</div>
-      <propertiesViewGrid v-else :properties="allProperties"></propertiesViewGrid>
+      <propertiesViewGrid
+        v-else
+        :properties="allProperties"
+      ></propertiesViewGrid>
     </section>
   </div>
 </template>
@@ -57,6 +60,9 @@ export default {
           price
           rooms
           squareMeters
+          featuredImage {
+            url(imgixParams: { auto: enhance, h: "320", w: "462" })
+          }
         }
       }
     `,

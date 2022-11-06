@@ -1,7 +1,7 @@
 <template>
   <div class="properties__property">
     <div class="properties__property--imgcontainer">
-      <img src="~/static/img/banner.jpg" alt=" TITLE " />
+      <img v-if="this.property.featuredImage" :src="this.property.featuredImage.url" alt=" TITLE " />
     </div>
     <div class="properties__property--details">
       <h4 class="properties__property--title">{{ this.property.address }}</h4>
@@ -27,7 +27,7 @@
       </div>
     </div>
     <div class="properties__property--actions">
-      <nuxt-link :to="'/property/' + this.property.id" class="btn seemore">Se more</nuxt-link>
+      <nuxt-link :to="'/property/' + this.property.id" class="btn seemore">See more</nuxt-link>
     </div>
   </div>
 </template>
@@ -79,6 +79,20 @@ export default {
   }
   &--title {
     font-size: 1.5rem;
+  }
+
+  &--actions{
+    .btn{
+      background-color: $primary;
+      color:#FFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      padding: 1rem;
+      border-radius: 1rem;
+      margin-top: 1rem;
+    }
   }
 }
 </style>
