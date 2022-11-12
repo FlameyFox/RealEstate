@@ -15,7 +15,7 @@
       </aside>
 
       <aside class="right">
-        <h2>Let find your home</h2>
+        <h2>Let's find your home</h2>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem animi
           error tempora autem quis perferendis alias ut, ducimus dolorum
@@ -61,7 +61,7 @@ export default {
           rooms
           squareMeters
           featuredImage {
-            url(imgixParams: { auto: enhance, h: "320", w: "462" })
+            url(imgixParams: { auto: enhance, h: "320", w: "500" })
           }
         }
       }
@@ -98,7 +98,7 @@ export default {
     flex-basis: 40%;
 
     h2 {
-      font-size: 3rem;
+      font-size: clamp(1.4rem,4vw,3rem);
       line-height: 1.2;
       margin-bottom: 1rem;
     }
@@ -109,7 +109,7 @@ export default {
     padding: 2rem;
 
     h2 {
-      font-size: 3rem;
+      font-size: clamp(1.4rem,4vw,3rem);
       margin-bottom: 1rem;
       line-height: 1.2;
     }

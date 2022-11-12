@@ -53,7 +53,7 @@ export default {
 <style lang="scss" scoped>
 .properties__property {
   &--imgcontainer {
-    height: 20rem;
+    height: clamp(10rem,15vw,20rem);
     margin-bottom: 1rem;
     img {
       border-radius: 1rem;
