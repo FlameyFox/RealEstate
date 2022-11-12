@@ -32,10 +32,11 @@ export default {
   modules: [
     '@nuxtjs/style-resources',
     '@nuxtjs/apollo',
+    '@nuxtjs/markdownit'
   ],
 
   env: {
-    CMS_DATOCMS_API_TOKEN: process.env.CMS_DATOCMS_API_TOKEN
+    CMS_DATOCMS_API_TOKEN: process.env.CMS_DATOCMS_API_TOKEN,
   },
 
   apollo: {
@@ -46,7 +47,6 @@ export default {
   styleResources: {
     scss: ['./assets/scss/*.scss'],
   },
-
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},

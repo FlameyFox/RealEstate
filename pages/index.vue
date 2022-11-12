@@ -35,42 +35,15 @@
     <section id="secondsection">
       <h2>Take a look</h2>
       <div v-if="$apollo.loading">Loading properties...</div>
-      <propertiesViewGrid
-        v-else
-        :properties="allProperties"
-      ></propertiesViewGrid>
+      <propertiesViewGrid v-else></propertiesViewGrid>
     </section>
   </div>
 </template>
 
 <script>
-import gql from 'graphql-tag'
 
 export default {
   name: 'IndexPage',
-
-  apollo: {
-    allProperties: gql`
-      {
-        allProperties {
-          id
-          _firstPublishedAt
-          _status
-          address
-          price
-          rooms
-          squareMeters
-          featuredImage {
-            url(imgixParams: { auto: enhance, h: "320", w: "500" })
-          }
-        }
-      }
-    `,
-  },
-
-  data() {
-    return {}
-  },
 }
 </script>
 
@@ -98,7 +71,7 @@ export default {
     flex-basis: 40%;
 
     h2 {
-      font-size: clamp(1.4rem,4vw,3rem);
+      font-size: clamp(1.4rem, 4vw, 3rem);
       line-height: 1.2;
       margin-bottom: 1rem;
     }
@@ -109,7 +82,7 @@ export default {
     padding: 2rem;
 
     h2 {
-      font-size: clamp(1.4rem,4vw,3rem);
+      font-size: clamp(1.4rem, 4vw, 3rem);
       margin-bottom: 1rem;
       line-height: 1.2;
     }
