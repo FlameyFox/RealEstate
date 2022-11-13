@@ -8,8 +8,9 @@
       />
     </div>
     <h1 v-if="this.property.address">{{ this.property.address }}</h1>
-    <h2>DETAILS</h2>
-    <div>
+    <property-features :features="this.property.features"></property-features>
+    <div class="description">
+      <h2>Description</h2>
       <div v-html="$md.render(this.property.description)"></div>
     </div>
   </div>
@@ -17,8 +18,10 @@
 
 <script>
 import gql from 'graphql-tag'
+import propertyFeatures from '~/components/property/propertyFeatures.vue'
 
 export default {
+  components: { propertyFeatures },
   apollo: {
     property: {
       query: gql`
@@ -35,6 +38,14 @@ export default {
             featuredImage {
               url(imgixParams: { auto: enhance, h: "1080", w: "1920" })
             }
+            features {
+              id
+              featureTitle
+              featureDescription
+              icon {
+                url
+              }
+            }
           }
         }
       `,
@@ -45,19 +56,45 @@ export default {
       },
     },
   },
+
+  head() {
+    return {
+      title: "test",
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'My custom description',
+        },
+      ],
+    }
+  },
 }
 </script>
 
 <style lang="scss" scoped>
 .property {
   h1 {
-    font-size: clamp(1.4rem, 4vw, 3rem);
+    font-size: clamp(1.8rem, 4vw, 3.4rem);
   }
 
   .hero {
     margin-bottom: 2rem;
     img {
       border-radius: 1.75rem;
+    }
+  }
+
+  .description {
+    background-color: $gray;
+    border-radius: 1.75rem;
+    padding: 1.5rem;
+    width: 100%;
+    margin-top: 2rem;
+
+    h2 {
+      font-size: clamp(1.4rem, 4vw, 2.6rem);
     }
   }
 }
