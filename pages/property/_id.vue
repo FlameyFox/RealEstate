@@ -1,13 +1,7 @@
 <template>
   <div v-if="$apollo.loading">Loading property...</div>
   <div class="property" v-else-if="this.property">
-    <div class="hero">
-      <img
-        :alt="this.property.featuredImage.alt"
-        :src="this.property.featuredImage.url"
-      />
-    </div>
-    <h1 v-if="this.property.address">{{ this.property.address }}</h1>
+    <property-hero :property="this.property"></property-hero>
     <property-features :features="this.property.features"></property-features>
     <div class="description">
       <h2>Description</h2>
@@ -19,9 +13,11 @@
 <script>
 import gql from 'graphql-tag'
 import propertyFeatures from '~/components/property/propertyFeatures.vue'
+import PropertyHero from '~/components/property/propertyHero.vue'
 
 export default {
-  components: { propertyFeatures },
+  components: { propertyFeatures, PropertyHero },
+
   apollo: {
     property: {
       query: gql`
@@ -36,6 +32,7 @@ export default {
             rooms
             squareMeters
             featuredImage {
+              alt
               url(imgixParams: { auto: enhance, h: "1080", w: "1920" })
             }
             features {
@@ -58,17 +55,18 @@ export default {
   },
 
   head() {
-    return {
-      title: this.property.address,
-      meta: [
-        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
-        {
-          
-          hid: 'description',
-          name: 'description',
-          content: this.property.description,
-        },
-      ],
+    if (this.property) {
+      return {
+        title: this.property.address,
+        meta: [
+          // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+          {
+            hid: 'description',
+            name: 'description',
+            content: this.property.description,
+          },
+        ],
+      }
     }
   },
 }
@@ -76,17 +74,6 @@ export default {
 
 <style lang="scss" scoped>
 .property {
-  h1 {
-    font-size: clamp(1.8rem, 4vw, 3.4rem);
-  }
-
-  .hero {
-    margin-bottom: 2rem;
-    img {
-      border-radius: 1.75rem;
-    }
-  }
-
   .description {
     background-color: $gray;
     border-radius: 1.75rem;
