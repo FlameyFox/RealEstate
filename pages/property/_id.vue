@@ -1,5 +1,10 @@
 <template>
-  <div v-if="$apollo.loading">Loading property...</div>
+  <div v-if="$apollo.loading">
+    <div class="skeleton-base">
+      <div class="left skeleton"></div>
+      <div class="right skeleton"></div>
+    </div>
+  </div>
   <div class="property" v-else-if="this.property">
     <property-hero :property="this.property"></property-hero>
     <property-features :features="this.property.features"></property-features>
@@ -78,6 +83,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.skeleton-base {
+  display: flex;
+  gap: 1.75rem;
+  height: 632px;
+
+  .left {
+    flex-basis: 33.3333%;
+    border-radius: 1.75rem;
+    padding: 1.5rem;
+  }
+  .right {
+    flex-basis: 66.6666%;
+  }
+}
+
 .property {
   .description {
     background-color: $gray;

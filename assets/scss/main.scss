@@ -36,6 +36,10 @@ body {
       z-index: 1;
     }
   }
+
+  .skeleton {
+    animation: skeleton-loading 1s linear infinite alternate;
+  }
 }
 
 /* Remove default margin */
@@ -118,4 +122,16 @@ a {
 .page-enter,
 .page-leave-to {
   opacity: 0;
+}
+
+/* SKELETON ANITMATIONS */
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: rgb(238, 238, 238);
+  }
+
+  100% {
+    background-color: #f1f1f1;
+  }
 }

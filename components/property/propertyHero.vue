@@ -126,6 +126,10 @@ export default {
     background-color: $gray;
     padding: 1.5rem;
 
+    &.skeleton{
+      min-height: 632px;
+    }
+
     sup {
       font-size: 70%;
     }
