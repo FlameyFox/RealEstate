@@ -43,6 +43,11 @@ export default {
                 url
               }
             }
+            gallery {
+              id
+              url(imgixParams: { auto: enhance, h: "1440", w: "2560" })
+              alt
+            }
           }
         }
       `,

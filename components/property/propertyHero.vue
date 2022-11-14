@@ -9,16 +9,30 @@
         <li>Rooms: {{ this.property.rooms }}</li>
       </ul>
     </div>
-    <div class="slider" v-if="toggleSlider" :class="toggleSlider ? 'active' : ''">
-      <p @click="toggleSlider = !toggleSlider" class="close">Close</p>
-      <VueSlickCarousel :arrows="true" :dots="true">
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
+    <div
+      class="slider"
+      v-if="toggleSlider && this.property.gallery"
+      :class="toggleSlider ? 'active' : ''"
+    >
+      <p @click="startSlider()" class="close">Close</p>
+      <VueSlickCarousel :arrows="true" lazyload="progressive" :dots="true">
+        <div v-for="image in this.property.gallery" :key="image.id">
+          <img :src="image.url" :alt="image.alt" />
+        </div>
       </VueSlickCarousel>
     </div>
-    <div class="image" @click="toggleSlider = !toggleSlider">
+    <div
+      v-if="this.property.gallery.length != 0"
+      class="image gallery-enabled"
+      @click="startSlider()"
+    >
+      <div class="badge">Added 2 days ago</div>
+      <img
+        :alt="this.property.featuredImage.alt"
+        :src="this.property.featuredImage.url"
+      />
+    </div>
+    <div v-else class="image">
       <div class="badge">Added 2 days ago</div>
       <img
         :alt="this.property.featuredImage.alt"
@@ -51,6 +65,13 @@ export default {
       })
       return priceFormat.format(number)
     },
+    startSlider() {
+      document.body.classList.toggle('sliderActive')
+      this.toggleSlider = !this.toggleSlider
+    },
+  },
+  beforeDestroy() {
+    document.body.classList.remove('sliderActive')
   },
 }
 </script>
@@ -62,16 +83,38 @@ export default {
   margin-bottom: 2rem;
 
   .slider {
-    max-width: 100%;
+    max-width: 1920px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 70vw;
-    height: 80vh;
-    background: rgba(0, 0, 0, 0.4);
+    height: auto;
     display: none;
     z-index: 2;
+    max-height: 80vh;
+
+    .slick-slider {
+      height: 100%;
+
+      img {
+        max-height: 80vh;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .close {
+      color: #fff;
+      background-color: $primary;
+      position: absolute;
+      right: 0;
+      top: -4rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 1.75rem;
+      cursor: pointer;
+    }
+
     &.active {
       display: block;
     }
@@ -95,7 +138,11 @@ export default {
   .image {
     flex-basis: 66.6666%;
     position: relative;
-    cursor: pointer;
+
+    &.gallery-enabled {
+      cursor: pointer;
+    }
+
     .badge {
       position: absolute;
       top: 1rem;
