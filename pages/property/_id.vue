@@ -1,9 +1,7 @@
 <template>
-  <div v-if="$apollo.loading">
-    <div class="skeleton-base">
-      <div class="left skeleton"></div>
-      <div class="right skeleton"></div>
-    </div>
+  <div v-if="loading" class="skeleton-base">
+    <div class="left skeleton"></div>
+    <div class="right skeleton"></div>
   </div>
   <div class="property" v-else-if="this.property">
     <property-hero :property="this.property"></property-hero>
@@ -23,46 +21,97 @@ import PropertyHero from '~/components/property/propertyHero.vue'
 export default {
   components: { propertyFeatures, PropertyHero },
 
-  apollo: {
-    property: {
-      query: gql`
-        query SINGLE_PROPERTY($id: ItemId) {
-          property(filter: { id: { eq: $id } }) {
-            id
-            _firstPublishedAt
-            _status
-            address
-            description
-            price
-            rooms
-            squareMeters
-            featuredImage {
-              alt
-              url(imgixParams: { auto: enhance, h: "1080", w: "1920" })
-            }
-            features {
+  data() {
+    return {
+      property: null,
+      loading: true,
+    }
+  },
+
+  async mounted() {
+    this.property = (
+      await this.$apollo.query({
+        fetchPolicy: 'no-cache',
+        query: gql`
+          query SINGLE_PROPERTY($id: ItemId) {
+            property(filter: { id: { eq: $id } }) {
               id
-              featureTitle
-              featureDescription
-              icon {
-                url
+              _firstPublishedAt
+              _status
+              address
+              description
+              price
+              rooms
+              squareMeters
+              featuredImage {
+                alt
+                url(imgixParams: { auto: enhance, h: "1080", w: "1920" })
+              }
+              features {
+                id
+                featureTitle
+                featureDescription
+                icon {
+                  url
+                }
+              }
+              gallery {
+                id
+                url(imgixParams: { auto: enhance, h: "1440", w: "2560" })
+                alt
               }
             }
-            gallery {
-              id
-              url(imgixParams: { auto: enhance, h: "1440", w: "2560" })
-              alt
-            }
           }
-        }
-      `,
-      variables() {
-        return {
+        `,
+        variables: {
           id: this.$route.params.id,
-        }
-      },
-    },
+        },
+      })
+    ).data.property
+
+    this.loading = false
   },
+
+  // apollo: {
+  //   property: {
+  //     query: gql`
+  //       query SINGLE_PROPERTY($id: ItemId) {
+  //         property(filter: { id: { eq: $id } }) {
+  //           id
+  //           _firstPublishedAt
+  //           _status
+  //           address
+  //           description
+  //           price
+  //           rooms
+  //           squareMeters
+  //           featuredImage {
+  //             alt
+  //             url(imgixParams: { auto: enhance, h: "1080", w: "1920" })
+  //           }
+  //           features {
+  //             id
+  //             featureTitle
+  //             featureDescription
+  //             icon {
+  //               url
+  //             }
+  //           }
+  //           gallery {
+  //             id
+  //             url(imgixParams: { auto: enhance, h: "1440", w: "2560" })
+  //             alt
+  //           }
+  //         }
+  //       }
+  //     `,
+  //     variables() {
+  //       return {
+  //         id: this.$route.params.id,
+  //       }
+  //     },
+  //   },
+  // },
 
   head() {
     if (this.property) {
@@ -87,14 +136,16 @@ export default {
   display: flex;
   gap: 1.75rem;
   height: 632px;
-
   .left {
     flex-basis: 33.3333%;
     border-radius: 1.75rem;
     padding: 1.5rem;
+    height: 100%;
   }
   .right {
     flex-basis: 66.6666%;
+    border-radius: 1.75rem;
+    height: 100%;
   }
 }
 

@@ -1,7 +1,7 @@
 <template>
   <div>
     <uiTheHeader/>
-    <Nuxt />
+    <Nuxt keep-alive />
     <UiTheFooter/>
   </div>
 </template>
