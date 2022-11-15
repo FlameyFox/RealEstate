@@ -1,5 +1,5 @@
 <template>
-  <div v-if="loading">
+  <div v-if="this.loading">
     <div class="skeleton-base">
       <div class="left skeleton"></div>
       <div class="right skeleton"></div>
@@ -13,7 +13,10 @@
   </div>
   <div class="property" v-else-if="this.property">
     <property-hero :property="this.property"></property-hero>
-    <property-features :features="this.property.features"></property-features>
+    <property-features
+      v-if="this.property.features.length > 0"
+      :features="this.property.features"
+    ></property-features>
     <div class="description">
       <h2>Description</h2>
       <div v-html="$md.render(this.property.description)"></div>

@@ -42,7 +42,8 @@ export default {
               rooms
               squareMeters
               featuredImage {
-                url(imgixParams: { auto: enhance, h: "320", w: "500" })
+                url(imgixParams: { auto: enhance, h: "420", w: "600" })
+                alt
               }
             }
           }

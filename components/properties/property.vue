@@ -1,7 +1,13 @@
 <template>
   <div class="properties__property">
     <div class="properties__property--imgcontainer">
-      <img v-if="this.property.featuredImage" :src="this.property.featuredImage.url" alt=" TITLE " />
+      <nuxt-link :to="'/property/' + this.property.id">
+        <img
+          v-if="this.property.featuredImage"
+          :src="this.property.featuredImage.url"
+          :alt="this.property.featuredImage.alt"
+        />
+      </nuxt-link>
     </div>
     <div class="properties__property--details">
       <h4 class="properties__property--title">{{ this.property.address }}</h4>
@@ -27,7 +33,9 @@
       </div>
     </div>
     <div class="properties__property--actions">
-      <nuxt-link :to="'/property/' + this.property.id" class="btn seemore">See more</nuxt-link>
+      <nuxt-link :to="'/property/' + this.property.id" class="btn seemore"
+        >See more</nuxt-link
+      >
     </div>
   </div>
 </template>
@@ -53,13 +61,21 @@ export default {
 <style lang="scss" scoped>
 .properties__property {
   &--imgcontainer {
-    height: clamp(10rem,15vw,20rem);
+    height: clamp(10rem, 15vw, 20rem);
     margin-bottom: 1rem;
+    overflow: hidden;
+    border-radius: 1rem;
     img {
-      border-radius: 1rem;
       height: 100%;
       width: 100%;
       object-fit: cover;
+      transition: transform 0.45s ease-in-out;
+    }
+
+    &:hover {
+      img {
+        transform: scale3d(1.075, 1.075, 1.075);
+      }
     }
   }
   &--details {
@@ -81,10 +97,10 @@ export default {
     font-size: 1.5rem;
   }
 
-  &--actions{
-    .btn{
+  &--actions {
+    .btn {
       background-color: $primary;
-      color:#FFF;
+      color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
