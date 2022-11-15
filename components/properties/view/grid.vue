@@ -1,5 +1,12 @@
 <template>
-  <div class="grid properties" v-if="allProperties">
+  <div v-if="loading">
+    <div class="skeleton-base">
+      <div class="skeleton"></div>
+      <div class="skeleton"></div>
+      <div class="skeleton"></div>
+    </div>
+  </div>
+  <div class="grid properties" v-else-if="allProperties">
     <propertiesProperty
       v-for="property in allProperties"
       :property="property"
@@ -13,28 +20,58 @@ import gql from 'graphql-tag'
 export default {
   name: 'IndexPage',
 
-  apollo: {
-    allProperties: gql`
-      {
-        allProperties {
-          id
-          _firstPublishedAt
-          _status
-          address
-          price
-          rooms
-          squareMeters
-          featuredImage {
-            url(imgixParams: { auto: enhance, h: "320", w: "500" })
+  data() {
+    return {
+      allProperties: [],
+      loading: true,
+    }
+  },
+
+  async mounted() {
+    this.allProperties = (
+      await this.$apollo.query({
+        fetchPolicy: 'no-cache',
+        query: gql`
+          {
+            allProperties {
+              id
+              _firstPublishedAt
+              _status
+              address
+              price
+              rooms
+              squareMeters
+              featuredImage {
+                url(imgixParams: { auto: enhance, h: "320", w: "500" })
+              }
+            }
           }
-        }
-      }
-    `,
+        `,
+        variables: {
+          id: this.$route.params.id,
+        },
+      })
+    ).data.allProperties
+
+    this.loading = false
   },
 }
 </script>
 
 <style lang="scss" scoped>
+.skeleton-base {
+  display: flex;
+  gap: 2rem;
+
+  .skeleton {
+    width: 33.333%;
+    border-radius: 1.75rem;
+    max-height: 515px;
+    height: 30vw;
+    min-height: 441px;
+  }
+}
+
 .properties {
   &.grid {
     display: grid;

@@ -1,7 +1,15 @@
 <template>
-  <div v-if="loading" class="skeleton-base">
-    <div class="left skeleton"></div>
-    <div class="right skeleton"></div>
+  <div v-if="loading">
+    <div class="skeleton-base">
+      <div class="left skeleton"></div>
+      <div class="right skeleton"></div>
+    </div>
+    <div class="skeleton-base small">
+      <div class="skeleton"></div>
+      <div class="skeleton"></div>
+      <div class="skeleton"></div>
+      <div class="skeleton"></div>
+    </div>
   </div>
   <div class="property" v-else-if="this.property">
     <property-hero :property="this.property"></property-hero>
@@ -72,47 +80,6 @@ export default {
     this.loading = false
   },
 
-  // apollo: {
-  //   property: {
-  //     query: gql`
-  //       query SINGLE_PROPERTY($id: ItemId) {
-  //         property(filter: { id: { eq: $id } }) {
-  //           id
-  //           _firstPublishedAt
-  //           _status
-  //           address
-  //           description
-  //           price
-  //           rooms
-  //           squareMeters
-  //           featuredImage {
-  //             alt
-  //             url(imgixParams: { auto: enhance, h: "1080", w: "1920" })
-  //           }
-  //           features {
-  //             id
-  //             featureTitle
-  //             featureDescription
-  //             icon {
-  //               url
-  //             }
-  //           }
-  //           gallery {
-  //             id
-  //             url(imgixParams: { auto: enhance, h: "1440", w: "2560" })
-  //             alt
-  //           }
-  //         }
-  //       }
-  //     `,
-  //     variables() {
-  //       return {
-  //         id: this.$route.params.id,
-  //       }
-  //     },
-  //   },
-  // },
-
   head() {
     if (this.property) {
       return {
@@ -146,6 +113,16 @@ export default {
     flex-basis: 66.6666%;
     border-radius: 1.75rem;
     height: 100%;
+  }
+
+  &.small {
+    margin-top: 2rem;
+
+    .skeleton {
+      width: 25%;
+      height: 96px;
+      border-radius: 1.75rem;
+    }
   }
 }
 
