@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="banner">
-      <img class="banner__img" src="~/static/img/banner.jpg" />
+      <img class="banner__img" height="600" width="1920" src="~/static/img/banner.jpg" />
     </div>
     <section id="firstsection">
       <aside class="left">
@@ -41,7 +41,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'IndexPage',
 }

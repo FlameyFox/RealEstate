@@ -1,11 +1,13 @@
 <template>
   <div class="properties__property">
     <div class="properties__property--imgcontainer">
-      <nuxt-link :to="'/property/' + this.property.id">
+      <nuxt-link :to="'/property/' + this.property.slug">
         <img
           v-if="this.property.featuredImage"
           :src="this.property.featuredImage.url"
           :alt="this.property.featuredImage.alt"
+          height="420"
+          width="600"
         />
       </nuxt-link>
     </div>
@@ -33,7 +35,7 @@
       </div>
     </div>
     <div class="properties__property--actions">
-      <nuxt-link :to="'/property/' + this.property.id" class="btn seemore"
+      <nuxt-link :to="'/property/' + this.property.slug" class="btn seemore"
         >See more</nuxt-link
       >
     </div>

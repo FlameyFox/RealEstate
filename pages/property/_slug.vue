@@ -44,9 +44,10 @@ export default {
       await this.$apollo.query({
         fetchPolicy: 'no-cache',
         query: gql`
-          query SINGLE_PROPERTY($id: ItemId) {
-            property(filter: { id: { eq: $id } }) {
+          query SINGLE_PROPERTY($slug: String) {
+            property(filter: { slug: { eq: $slug } }) {
               id
+              slug
               _firstPublishedAt
               _status
               address
@@ -75,7 +76,7 @@ export default {
           }
         `,
         variables: {
-          id: this.$route.params.id,
+          slug: this.$route.params.slug,
         },
       })
     ).data.property

@@ -30,6 +30,8 @@
       <img
         :alt="this.property.featuredImage.alt"
         :src="this.property.featuredImage.url"
+        width="960"
+        height="640"
       />
     </div>
     <div v-else class="image">
@@ -126,7 +128,7 @@ export default {
     background-color: $gray;
     padding: 1.5rem;
 
-    &.skeleton{
+    &.skeleton {
       min-height: 632px;
     }
 

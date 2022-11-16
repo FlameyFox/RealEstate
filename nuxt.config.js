@@ -1,5 +1,5 @@
 export default {
-  //target: 'static',
+  target: 'static',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -29,11 +29,7 @@ export default {
   buildModules: [],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-    '@nuxtjs/style-resources',
-    '@nuxtjs/apollo',
-    '@nuxtjs/markdownit'
-  ],
+  modules: ['@nuxtjs/style-resources', '@nuxtjs/apollo', '@nuxtjs/markdownit'],
 
   env: {
     CMS_DATOCMS_API_TOKEN: process.env.CMS_DATOCMS_API_TOKEN,

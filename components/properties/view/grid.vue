@@ -35,6 +35,7 @@ export default {
           {
             allProperties {
               id
+              slug
               _firstPublishedAt
               _status
               address
