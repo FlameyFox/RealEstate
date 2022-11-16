@@ -1,6 +1,8 @@
 <template>
   <header>
-    <nuxt-link to="/" class="logo">FlameyEstates</nuxt-link>
+    <div class="logo">
+      <nuxt-link to="/">FlameyEstates</nuxt-link>
+    </div>
     <div class="menu">
       <ul>
         <li>
@@ -55,7 +57,7 @@ header {
         color: #222;
         text-decoration: none;
         position: relative;
-        transition: color .2s ease-in-out;
+        transition: color 0.2s ease-in-out;
 
         &:visited,
         &:active {
@@ -74,13 +76,11 @@ header {
           transform: scaleX(0);
           transform-origin: right;
         }
-        &:hover{
-          color:#999;
+        &:hover {
+          color: #999;
         }
 
-
         &.nuxt-link-exact-active {
-
           &::after {
             transform: scaleX(1);
             transform-origin: left;
