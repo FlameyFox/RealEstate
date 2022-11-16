@@ -1,11 +1,11 @@
 # FlameyEstates - Demo project 🏡
 
-A realestate website, listing homes for purchase.
+A realestate platform listing homes for purchase, with a very slick and minimalistic design.
 
 Using [DatoCMS](https://datocms.com) as a Headless CMS and [NuxtJS](https://nuxt.com/) for the frontend.
 I opted for writing my own styles in SCSS, rather than using a framework.
 
-More details to come..
+Projecet is still under development and more details will come..
 
 
 
