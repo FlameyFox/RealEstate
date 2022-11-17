@@ -8,6 +8,7 @@
           :alt="this.property.featuredImage.alt"
           height="420"
           width="600"
+          :title="this.property.address"
         />
       </nuxt-link>
     </div>
@@ -24,9 +25,6 @@
           <h5>Rooms: {{ this.property.rooms }}</h5>
         </div>
         <div>
-          <h5>Features: <abbr title="Show features here">xxx</abbr></h5>
-        </div>
-        <div>
           <h5>
             Date:
             {{ new Date(this.property._firstPublishedAt).toLocaleDateString() }}
@@ -35,7 +33,10 @@
       </div>
     </div>
     <div class="properties__property--actions">
-      <nuxt-link :to="'/property/' + this.property.slug" class="btn seemore"
+      <nuxt-link
+        title="Go to property"
+        :to="'/property/' + this.property.slug"
+        class="btn seemore"
         >See more</nuxt-link
       >
     </div>
@@ -46,6 +47,12 @@
 export default {
   props: {
     property: Object,
+  },
+
+  data() {
+    return {
+      featureList: '',
+    }
   },
   methods: {
     formatPrice(number) {

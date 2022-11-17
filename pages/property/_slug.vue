@@ -51,6 +51,7 @@ export default {
               _firstPublishedAt
               _status
               address
+              badge
               description
               price
               rooms

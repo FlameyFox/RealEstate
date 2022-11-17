@@ -26,7 +26,9 @@
       class="image gallery-enabled"
       @click="startSlider()"
     >
-      <div class="badge">Added 2 days ago</div>
+      <div v-if="this.property.badge" class="badge">
+        {{ this.property.badge }}
+      </div>
       <img
         :alt="this.property.featuredImage.alt"
         :src="this.property.featuredImage.url"
@@ -35,7 +37,9 @@
       />
     </div>
     <div v-else class="image">
-      <div class="badge">Added 2 days ago</div>
+      <div v-if="this.property.badge" class="badge">
+        {{ this.property.badge }}
+      </div>
       <img
         :alt="this.property.featuredImage.alt"
         :src="this.property.featuredImage.url"

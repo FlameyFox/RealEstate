@@ -42,6 +42,14 @@ export default {
               price
               rooms
               squareMeters
+              features {
+                id
+                featureTitle
+                featureDescription
+                icon {
+                  url
+                }
+              }
               featuredImage {
                 url(imgixParams: { auto: enhance, h: "420", w: "600" })
                 alt
