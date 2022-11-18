@@ -19,6 +19,7 @@ export default {
       { name: 'format-detection', content: 'telephone=no' },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [{ rel: 'preload', href: '~/assets/fonts/Nunito-VariableFont_wght.ttf' }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
