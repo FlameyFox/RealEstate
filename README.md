@@ -4,8 +4,12 @@ A realestate platform listing homes for purchase, with a very slick and minimali
 
 Using [DatoCMS](https://datocms.com) as a Headless CMS and [NuxtJS](https://nuxt.com/) for the frontend.
 I opted for writing my own styles in SCSS, rather than using a framework.
+Images used are from [Unsplash](https://unsplash.com).
 
-Projecet is still under development and more details will come..
+If you have any suggestions or feedback, feel free to reach out to me.
+And if you like what you see, please consider starring the repo! 🌟
+
+Project is still under development and more details will come..
 
 
 
