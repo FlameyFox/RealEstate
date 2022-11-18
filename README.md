@@ -6,8 +6,8 @@ Using [DatoCMS](https://datocms.com) as a Headless CMS and [NuxtJS](https://nuxt
 I opted for writing my own styles in SCSS, rather than using a framework.
 Images used are from [Unsplash](https://unsplash.com).
 
-If you have any suggestions or feedback, feel free to reach out to me
-- and if you like what you see, please consider starring the repo! 🌟
+If you have any suggestions or feedback, feel free to reach out to me.
+And if you like what you see, please consider starring the repo! 🌟
 
 Project is still under development and more details will come..
 
