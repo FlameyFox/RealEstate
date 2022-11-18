@@ -19,15 +19,21 @@
       </h4>
       <div class="details">
         <div>
-          <h5>Size: {{ this.property.squareMeters }}</h5>
+          <h5>
+            Size:<span>{{ this.property.squareMeters }}</span>
+          </h5>
         </div>
         <div>
-          <h5>Rooms: {{ this.property.rooms }}</h5>
+          <h5>
+            Rooms:<span>{{ this.property.rooms }}</span>
+          </h5>
         </div>
         <div>
           <h5>
             Date:
-            {{ new Date(this.property._firstPublishedAt).toLocaleDateString() }}
+            <span>{{
+              new Date(this.property._firstPublishedAt).toLocaleDateString()
+            }}</span>
           </h5>
         </div>
       </div>
@@ -89,7 +95,7 @@ export default {
   }
   &--details {
     background-color: $gray;
-    padding: 1rem;
+    padding: 1.5rem;
     border-radius: 1rem;
 
     .details {
@@ -99,6 +105,16 @@ export default {
       > div {
         display: flex;
         flex-direction: column;
+
+        h5 {
+          font-weight: normal;
+          font-size: 0.85rem;
+          span {
+            display: block;
+            font-weight: 900;
+            font-size: 1.2rem;
+          }
+        }
       }
     }
   }
@@ -117,6 +133,11 @@ export default {
       padding: 1rem;
       border-radius: 1rem;
       margin-top: 1rem;
+      transition: all .3s ease-in-out;
+
+      &:hover{
+        background-color: $primary-dark;
+      }
     }
   }
 }

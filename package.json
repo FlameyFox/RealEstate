@@ -15,6 +15,7 @@
     "@nuxtjs/apollo": "^4.0.1-rc.5",
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/markdownit": "^2.0.0",
+    "@nuxtjs/web-vitals": "^0.1.10",
     "core-js": "^3.19.3",
     "graphql-request": "^5.0.0",
     "nuxt": "^2.15.8",

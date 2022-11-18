@@ -34,7 +34,12 @@ export default {
   buildModules: [],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxtjs/style-resources', '@nuxtjs/apollo', '@nuxtjs/markdownit'],
+  modules: [
+    '@nuxtjs/style-resources',
+    '@nuxtjs/apollo',
+    '@nuxtjs/markdownit',
+    '@nuxtjs/web-vitals',
+  ],
 
   env: {
     CMS_DATOCMS_API_TOKEN: process.env.CMS_DATOCMS_API_TOKEN,
