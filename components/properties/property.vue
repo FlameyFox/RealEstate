@@ -133,9 +133,9 @@ export default {
       padding: 1rem;
       border-radius: 1rem;
       margin-top: 1rem;
-      transition: all .3s ease-in-out;
+      transition: all 0.3s ease-in-out;
 
-      &:hover{
+      &:hover {
         background-color: $primary-dark;
       }
     }
