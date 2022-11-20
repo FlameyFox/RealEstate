@@ -1,7 +1,12 @@
 <template>
   <div>
     <div class="banner">
-      <img class="banner__img" height="600" width="1920" src="~/static/img/banner.jpg" />
+      <img
+        class="banner__img"
+        height="600"
+        width="1920"
+        src="~/static/img/banner.jpg"
+      />
     </div>
     <section id="firstsection">
       <aside class="left">
@@ -55,6 +60,10 @@ export default {
     width: 100%;
     object-fit: cover;
     border-radius: 1.75rem;
+
+    @media screen and (max-width: 768px) {
+      height: clamp(340px, 35vw, 70vh);
+    }
   }
 }
 #firstsection {
@@ -84,6 +93,15 @@ export default {
       font-size: clamp(1.4rem, 4vw, 3rem);
       margin-bottom: 1rem;
       line-height: 1.2;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    flex-wrap: wrap;
+
+    .left,
+    .right {
+      flex-basis: 100%;
     }
   }
 }

@@ -80,6 +80,10 @@ export default {
     margin-bottom: 1rem;
     overflow: hidden;
     border-radius: 1rem;
+
+    @media screen and (max-width: 768px) {
+      height: clamp(15rem, 15vw, 20rem);
+    }
     img {
       height: 100%;
       width: 100%;
