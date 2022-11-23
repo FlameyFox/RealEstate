@@ -42,11 +42,11 @@ export default {
     openModal() {
       this.loginModal = !this.loginModal
 
-      document.body.classList.toggle('sliderActive')
+      document.body.classList.toggle('backdrop')
     },
   },
   beforeDestroy() {
-    document.body.classList.remove('sliderActive')
+    document.body.classList.remove('backdrop')
   },
 }
 </script>

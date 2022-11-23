@@ -72,12 +72,12 @@ export default {
       return priceFormat.format(number)
     },
     startSlider() {
-      document.body.classList.toggle('sliderActive')
+      document.body.classList.toggle('backdrop')
       this.toggleSlider = !this.toggleSlider
     },
   },
   beforeDestroy() {
-    document.body.classList.remove('sliderActive')
+    document.body.classList.remove('backdrop')
   },
 }
 </script>

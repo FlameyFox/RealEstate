@@ -25,7 +25,7 @@ $gray: #f5f5f5;
 body {
   padding: 4% 8%;
   position: relative;
-  &.sliderActive {
+  &.backdrop {
     overflow-y: hidden;
 
     &:before {
@@ -66,6 +66,35 @@ body {
     @keyframes shimmer {
       100% {
         transform: translateX(100%);
+      }
+    }
+  }
+
+  .slider.active {
+    .slick-slider.slick-initialized{
+      .slick-next {
+        right: clamp(-12%,4vw,-80px);
+        display: flex!important;
+        align-items: center;
+        justify-content: center;
+        &::before {
+          font-size: clamp(24px, 4vw, 64px);
+          opacity: 1;
+        }
+      }
+      .slick-prev {
+        left: clamp(-12%,4vw,-80px);
+        display: flex!important;
+        align-items: center;
+        justify-content: center;
+        &::before {
+          font-size: clamp(24px, 4vw, 64px);
+          opacity: 1;
+        }
+      }
+
+      .slick-dots li button::before {
+        color: #fff;
       }
     }
   }
